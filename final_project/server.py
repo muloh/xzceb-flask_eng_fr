@@ -1,4 +1,5 @@
 from machinetranslation import translator
+from machinetranslation.translator import language_translator
 from flask import Flask, render_template, request
 import json
 
@@ -11,6 +12,7 @@ def englishToFrench():
     # Write your code here
     french_text = language_translator.translate(text=textToTranslate, model_id='en-fr').get_result()
     translated_text = french_text['translations'][0]['translation']
+    print(translated_text)
     return translated_text
 
 @app.route("/frenchToEnglish")
